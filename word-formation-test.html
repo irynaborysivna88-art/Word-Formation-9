@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Word Formation — Test</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap">
+<style>
+:root{--bg:#fff;--card:#f7f8fa;--text:#22252a;--muted:#5f6670;--line:#d9dde3;--acc:#7a1f3d;--acc2:#1f4e8c;--ok:#1d7a46;--okbg:#e6f4ec;--bad:#b3261e;--badbg:#fbeaea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17191d;--card:#202329;--text:#eceef1;--muted:#a3a9b3;--line:#363a42;--acc:#e08aa5;--acc2:#8fb4ea;--ok:#6fd49a;--okbg:#17301f;--bad:#ff9b94;--badbg:#3a1d1b}}
+:root[data-theme="dark"]{--bg:#17191d;--card:#202329;--text:#eceef1;--muted:#a3a9b3;--line:#363a42;--acc:#e08aa5;--acc2:#8fb4ea;--ok:#6fd49a;--okbg:#17301f;--bad:#ff9b94;--badbg:#3a1d1b}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 "Source Sans 3",system-ui,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px 60px}
+header{padding:34px 0 8px}
+h1{font:700 40px/1.05 "Source Serif 4",Georgia,serif;margin:0;color:var(--acc);letter-spacing:-.01em}
+.sub{color:var(--muted);margin:10px 0 0}
+.info{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin:22px 0 10px}
+.info label{font-size:14px;color:var(--muted);display:block}
+.info input{width:100%;border:0;border-bottom:2px solid var(--line);background:transparent;color:var(--text);font:inherit;padding:4px 0}
+.info input:focus{outline:none;border-color:var(--acc2)}
+@media(max-width:560px){.info{grid-template-columns:1fr}h1{font-size:32px}}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(env(safe-area-inset-top,0px) + 8px) 0 8px;border-bottom:1px solid var(--line)}
+.bar .t{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:5px}
+.track{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--acc);transition:width .25s}
+section{margin-top:34px}
+section h2{font:700 24px/1.2 "Source Serif 4",Georgia,serif;margin:0;color:var(--acc2)}
+section .ins{color:var(--muted);margin:4px 0 14px}
+.q{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:8px;padding:14px 16px;margin-bottom:12px}
+.q.ok{border-left-color:var(--ok);background:var(--okbg)}
+.q.no{border-left-color:var(--bad);background:var(--badbg)}
+.n{font-weight:700;color:var(--acc2);margin-right:6px}
+.w{font-weight:700;margin-left:6px}
+.blank,.fix{border:0;border-bottom:2px solid var(--muted);background:transparent;color:var(--text);font:inherit;width:150px;padding:0 4px;text-align:center}
+.fix{display:block;margin-top:10px;width:100%;max-width:260px;text-align:left;border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--bg)}
+.blank:focus,.fix:focus{outline:2px solid var(--acc2);outline-offset:2px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media(max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:11px 12px;cursor:pointer;min-height:46px}
+.opt:has(input:checked){border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
+.opt input{accent-color:var(--acc);width:18px;height:18px;margin:0}
+.fb{margin-top:8px;font-size:15px;font-weight:600}
+.q.ok .fb{color:var(--ok)}.q.no .fb{color:var(--bad)}
+button{font:600 17px "Source Sans 3",system-ui,sans-serif;border:0;border-radius:8px;padding:14px 28px;cursor:pointer;background:var(--acc);color:#fff}
+button.alt{background:transparent;color:var(--acc);border:2px solid var(--acc)}
+button:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+.act{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+.res{display:none;border:2px solid var(--acc);border-radius:12px;padding:24px;margin-top:28px;background:var(--card);text-align:center}
+.res h3{margin:0 0 14px;font:700 20px "Source Serif 4",Georgia,serif}
+.res .row{font-size:18px}
+.grade{font:700 64px/1.1 "Source Serif 4",Georgia,serif;color:var(--acc);margin:14px 0 6px}
+.msg{font-size:18px;margin:6px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>WORD FORMATION<br>TEST</h1>
+<p class="sub">Complete all three tasks. Check your answers carefully and click SUBMIT TEST when you are ready.</p>
+<div class="info">
+<div><label for="nm">Name</label><input id="nm" autocomplete="name"></div>
+<div><label for="cl">Class</label><input id="cl"></div>
+<div><label for="dt">Date</label><input id="dt"></div>
+</div>
+</header>
+<div class="bar"><div class="t"><span id="ptxt">Answered 0 of 20</span><span>Word Formation</span></div><div class="track"><div class="fill" id="fill"></div></div></div>
+<div id="res" class="res" role="status" aria-live="polite"></div>
+<div id="app"></div>
+<div class="act"><button id="sub">SUBMIT TEST</button><button id="rst" class="alt" style="display:none">TRY AGAIN</button></div>
+</div>
+<script>
+var T1=[
+["Winning the competition was a great ___ for our team.","ACHIEVE",["achievement"]],
+["The teacher said that late homework is not ___.","ACCEPT",["acceptable"]],
+["\u201CI will never pass this exam,\u201D he said ___.","HOPE",["hopelessly"]],
+["She worked hard and ___ passed all her exams.","SUCCEED",["successfully"]],
+["Many students believe that ___ is the key to a better future.","EDUCATE",["education"]],
+["We are ___ that the weather will be good tomorrow.","HOPE",["hopeful"]],
+["If you practise every day, you will ___ in the end.","SUCCEED",["succeed"]],
+["Her ___ into the university made her family very proud.","ACCEPT",["acceptance"]]
+];
+var T2=[
+["Her presentation was very ___.",["succeed","success","successfully","successful"],3],
+["The students behaved ___ during the trip.",["acceptance","acceptable","accept","acceptably"],3],
+["___, the rain will stop before the match.",["Hope","Hopeful","Hopefully","Hopeless"],2],
+["Learning three languages is an ___ goal if you study regularly.",["achievable","achieve","achievement","achieving"],0],
+["Parents play an important role in their children\u2019s ___.",["educational","education","educate","educationally"],1],
+["Tom wants to ___ as a doctor, so he studies hard.",["success","successful","succeed","successfully"],2]
+];
+var T3=[
+["She spoke hopeful about her future.",["hopefully"]],
+["The team\u2019s achieve was celebrated by the whole school.",["achievement"]],
+["The judges did not accepting her explanation.",["accept"]],
+["The situation looked hope, but nobody gave up.",["hopeless"]],
+["We hope that our team will success.",["succeed"]],
+["The school wants to education every child in the village.",["educate"]]
+];
+var SC=[1,1,1,2,2,3,3,4,5,5,6,6,7,7,8,9,9,10,11,11,12];
+var done=false,app=document.getElementById("app");
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function sec(t,i,h){return '<section><h2>'+t+'</h2><p class="ins">'+i+'</p>'+h+'</section>'}
+function build(){
+ var n=0,h1="",h2="",h3="";
+ T1.forEach(function(q,i){n++;var p=q[0].split("___");
+  h1+='<div class="q" id="q'+(n-1)+'"><span class="n">'+n+'.</span>'+esc(p[0])+'<input class="blank" data-i="'+(n-1)+'" aria-label="Answer '+n+'" autocomplete="off" autocapitalize="off" spellcheck="false">'+esc(p[1])+'<span class="w">'+q[1]+'</span><div class="fb"></div></div>'});
+ T2.forEach(function(q,i){n++;var k=n-1;
+  h2+='<div class="q" id="q'+k+'"><span class="n">'+n+'.</span>'+esc(q[0].replace("___","__________"))+'<div class="opts">'+q[1].map(function(o,j){return '<label class="opt"><input type="radio" name="r'+k+'" value="'+j+'" data-i="'+k+'"><span>'+"ABCD"[j]+") "+o+'</span></label>'}).join("")+'</div><div class="fb"></div></div>'});
+ T3.forEach(function(q,i){n++;var k=n-1;
+  h3+='<div class="q" id="q'+k+'"><span class="n">'+n+'.</span>'+esc(q[0])+'<input class="fix" data-i="'+k+'" placeholder="Type the correct form" aria-label="Correction '+n+'" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="fb"></div></div>'});
+ app.innerHTML=sec("Task 1 \u2013 Word formation","Complete the sentence with the correct form of the word in CAPITALS. Type the missing word.",h1)+sec("Task 2 \u2013 Choose the correct form","Choose the correct word to complete each sentence.",h2)+sec("Task 3 \u2013 Find and correct the mistake","Each sentence contains ONE word-formation mistake. Find it and type the correct form of the word.",h3);
+ prog();
+}
+function val(k){
+ if(k<8||k>=14){var e=app.querySelector('[data-i="'+k+'"]');return e.value.trim().toLowerCase()}
+ var c=app.querySelector('input[name="r'+k+'"]:checked');return c?c.value:""}
+function prog(){var c=0;for(var k=0;k<20;k++)if(val(k)!=="")c++;
+ document.getElementById("ptxt").textContent="Answered "+c+" of 20";document.getElementById("fill").style.width=(c*5)+"%"}
+app.addEventListener("input",function(){if(!done)prog()});
+function msg(g){return g>=10?"Excellent work! Your word formation skills are really strong. Keep it up!":g>=7?"Great job! You understand word formation well. A little more practice and you\u2019ll be even stronger!":g>=4?"Good effort! You\u2019re making progress. Review the word families and try again!":"Keep going! Mistakes are part of learning. Review the word families and give it another try!"}
+document.getElementById("sub").onclick=function(){
+ if(done)return;done=true;var score=0;
+ for(var k=0;k<20;k++){
+  var el=document.getElementById("q"+k),fb=el.querySelector(".fb"),v=val(k),ok,ans;
+  if(k<8){ans=T1[k][2];ok=ans.indexOf(v)>-1}
+  else if(k<14){var q=T2[k-8];ans=[q[1][q[2]]];ok=v!==""&&+v===q[2]}
+  else{ans=T3[k-14][1];ok=ans.indexOf(v)>-1}
+  if(ok)score++;
+  el.classList.add(ok?"ok":"no");
+  fb.textContent=ok?"\u2713 Correct":(v===""?"\u2717 No answer. ":"\u2717 Incorrect. ")+"Correct answer: "+ans[0]}
+ app.querySelectorAll("input").forEach(function(i){i.disabled=true});
+ var pct=Math.round(score/20*100),g=SC[score];
+ var r=document.getElementById("res");
+ r.innerHTML='<h3>WORD FORMATION \u2014 TEST RESULTS</h3><div class="row">Correct answers: <b>'+score+' / 20</b></div><div class="row">Percentage: <b>'+pct+' %</b></div><div class="grade">Your grade: '+g+' / 12</div><p class="msg">'+msg(g)+'</p>';
+ r.style.display="block";
+ document.getElementById("sub").style.display="none";document.getElementById("rst").style.display="inline-block";
+ r.scrollIntoView({behavior:"smooth",block:"start"})};
+document.getElementById("rst").onclick=function(){
+ done=false;document.getElementById("res").style.display="none";
+ document.getElementById("sub").style.display="inline-block";document.getElementById("rst").style.display="none";
+ build();window.scrollTo({top:0,behavior:"smooth"})};
+build();
+</script>
+</body>
+</html>
